@@ -2,7 +2,9 @@ package main
 
 import (
 	"flag"
+	"fmt"
 
+	"github.com/pezhmankasraee/pkneuron/gemini"
 	"github.com/pezhmankasraee/pkneuron/help"
 )
 
@@ -12,6 +14,11 @@ func main() {
 
 	flag.Parse()
 	help.ShowHelp(isHelp)
+
+	fmt.Println("-- Welcome to PKNeuron!")
+
+	gemini.Init()
+
 }
 
 func init() {
