@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/pezhmankasraee/pklog/v2"
+	"github.com/pezhmankasraee/pkneuron/reader"
 	"google.golang.org/genai"
 )
 
@@ -15,12 +16,14 @@ func Init() {
 		pklog.CreateLog(pklog.FatalError, err.Error())
 	}
 
+	request := reader.Read()
+
 	//model := "gemini-2.5-flash"
 	model := "learnlm-2.0-flash-experimental"
 	result, _ := client.Models.GenerateContent(
 		ctx,
 		model,
-		genai.Text("Explain how AI works in a few words"),
+		genai.Text(request),
 		nil,
 	)
 
