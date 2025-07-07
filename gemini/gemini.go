@@ -18,6 +18,8 @@ func Init() {
 
 	request := reader.Read()
 
+	fmt.Print("-----: " + request)
+
 	//model := "gemini-2.5-flash"
 	model := "learnlm-2.0-flash-experimental"
 	result, _ := client.Models.GenerateContent(

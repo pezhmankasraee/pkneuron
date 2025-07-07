@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
+	"github.com/pezhmankasraee/pklog/v2"
 	"github.com/pezhmankasraee/pkneuron/gemini"
 	"github.com/pezhmankasraee/pkneuron/help"
 )
@@ -17,7 +19,21 @@ func main() {
 
 	fmt.Println("-- Welcome to PKNeuron!")
 
-	gemini.Init()
+	var continueLoop rune
+	for {
+
+		fmt.Println("\033[33;1mDo you want to continue (Y/n)?\033[0m")
+		_, err := fmt.Scanf("%c", &continueLoop)
+		if err != nil {
+			pklog.CreateLog(pklog.FatalError, err.Error())
+		}
+
+		if continueLoop == 'n' {
+			os.Exit(0)
+		}
+
+		gemini.Init()
+	}
 
 }
 

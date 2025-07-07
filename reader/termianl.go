@@ -2,22 +2,25 @@ package reader
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
-
-	"github.com/pezhmankasraee/pklog/v2"
 )
 
 func Read() string {
 
 	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("\033[33mPaste your text (press Ctrl+D to finish):\033[0m")
 
-	println("Enter the request> ")
-	input, err := reader.ReadString('\n')
-	if err != nil {
-		pklog.CreateLog(pklog.FatalError, err.Error())
+	var lines []string
+	for {
+		line, err := reader.ReadString('\n')
+		if err != nil { // This will be true on EOF (Ctrl+D)
+			break
+		}
+		line = strings.TrimRight(line, "\r\n")
+		lines = append(lines, line)
 	}
-
-	input = strings.TrimSpace(input)
+	input := strings.Join(lines, "\n")
 	return input
 }
