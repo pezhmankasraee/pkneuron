@@ -24,6 +24,7 @@ Commands / Special Markers:
     All commands start and end with 'c:'.
     For example: c:s
 
+    c:e, c:exit               exit the application (it can be done with Ctrl-c, too)
     c:s, c:send               sends your request to AI model
 
 For more information, visit: https://github.com/pezhmankasraee/pkneuron
