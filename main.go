@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/pezhmankasraee/pklog/v2"
 	"github.com/pezhmankasraee/pkneuron/gemini"
@@ -19,16 +21,19 @@ func main() {
 
 	fmt.Println("-- Welcome to PKNeuron!")
 
-	var continueLoop rune
+	reader := bufio.NewReader(os.Stdin)
 	for {
 
 		fmt.Println("\033[33;1mDo you want to continue (Y/n)?\033[0m")
-		_, err := fmt.Scanf("%c", &continueLoop)
+		continueLoop, err := reader.ReadString('\n')
 		if err != nil {
 			pklog.CreateLog(pklog.FatalError, err.Error())
+			continue
 		}
 
-		if continueLoop == 'n' {
+		continueLoop = strings.TrimSpace(continueLoop) // remove spaces/newlines
+		if len(continueLoop) > 0 && continueLoop[0] == 'n' {
+			fmt.Println("Exiting ...")
 			os.Exit(0)
 		}
 

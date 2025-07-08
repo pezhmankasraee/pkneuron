@@ -18,10 +18,10 @@ func Init() {
 
 	request := reader.Read()
 
-	fmt.Print("-----: " + request)
+	fmt.Println("\033[36mPlease wait ... \033[0m")
 
-	//model := "gemini-2.5-flash"
-	model := "learnlm-2.0-flash-experimental"
+	model := "gemini-2.5-flash"
+	//model := "learnlm-2.0-flash-experimental"
 	result, _ := client.Models.GenerateContent(
 		ctx,
 		model,
