@@ -1,7 +1,6 @@
 package help
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -13,13 +12,22 @@ func ShowHelp(isHelp bool) {
 }
 
 func generalHelp() {
-	fmt.Println("")
-	fmt.Println("PKNeuron - An interactive LLM assistant for Linux terminal.")
-	fmt.Println("")
-	fmt.Println("Usage: pkneuron [OPTIONS]")
-	fmt.Println("")
-	fmt.Println("Options:")
-	fmt.Println("  -h, --help          Show this help message")
-	fmt.Println("")
-	fmt.Println("For more information, visit: https://github.com/pezhmankasraee/pkneuron")
+	helpMenu := `
+PKNeuron - An interactive LLM assistant for Linux terminal.
+
+Usage: pkneuron [OPTIONS]
+
+Options:
+    -h, --help          Show this help message
+
+Commands / Special Markers:
+    All commands start and end with 'c:'.
+    For example: c:s
+
+    c:s, c:send               sends your request to AI model
+
+For more information, visit: https://github.com/pezhmankasraee/pkneuron
+`
+
+	println(helpMenu)
 }

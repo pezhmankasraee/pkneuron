@@ -24,7 +24,8 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	for {
 
-		fmt.Println("\033[33;1mDo you want to continue (Y/n)?\033[0m")
+		fmt.Println("\033[33;1mNOTE: use c:e or c:exit to exit / press any key to continue)\033[0m")
+		fmt.Print("\033[33m> \033[0m")
 		continueLoop, err := reader.ReadString('\n')
 		if err != nil {
 			pklog.CreateLog(pklog.FatalError, err.Error())
@@ -32,7 +33,7 @@ func main() {
 		}
 
 		continueLoop = strings.TrimSpace(continueLoop) // remove spaces/newlines
-		if len(continueLoop) > 0 && continueLoop[0] == 'n' {
+		if strings.EqualFold(continueLoop, "c:e") || strings.EqualFold(continueLoop, "c:exit") {
 			fmt.Println("Exiting ...")
 			os.Exit(0)
 		}
