@@ -27,11 +27,14 @@ func Init() {
 		model := "gemini-2.5-flash"
 		//model := "learnlm-2.0-flash-experimental"
 
+		config := &genai.GenerateContentConfig{
+			ResponseMIMEType: "text/plain",
+		}
 		result, err := client.Models.GenerateContent(
 			ctx,
 			model,
 			genai.Text(request),
-			nil,
+			config,
 		)
 		if err != nil {
 			pklog.CreateLog(pklog.FatalError, err.Error())
