@@ -7,13 +7,17 @@ import (
 	"strings"
 
 	"github.com/pezhmankasraee/pklog/v2"
+	"github.com/pezhmankasraee/pkneuron/command"
+	"github.com/pezhmankasraee/pkneuron/help"
 )
 
 func Read() string {
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("\033[33;1mNOTE: use c:s / c:send at the end of the request)\033[0m")
-	fmt.Println("\033[33mrequest > \033[0m")
+	fmt.Println("\033[33;1mNOTE: \033[0m")
+	fmt.Println("\033[33;1m-  use " + command.SHORT_SEND + " / " + command.LONG_SEND + " at the end of the request\033[0m")
+	fmt.Println("\033[33;1m-  use " + command.SHORT_HELP + " / " + command.LONG_HELP + " to see list of commmands\033[0m")
+	fmt.Println("\033[33mPKNeuron> \033[0m")
 
 	var sb strings.Builder // Use strings.Builder for efficient concatenation
 	// sb.Grow(initialCapacity) // Optional: If you can estimate total size, pre-allocate for even more efficiency
@@ -28,12 +32,18 @@ func Read() string {
 
 		line = strings.TrimRight(line, "\r\n") // Trim both \r and \n
 
-		if strings.EqualFold(line, "c:e") || strings.EqualFold(line, "c:exit") {
+		if strings.EqualFold(line, command.SHORT_EXIT) || strings.EqualFold(line, command.LONG_EXIT) {
 			fmt.Println("Exiting ...")
 			os.Exit(0)
 		}
 
-		if strings.EqualFold(line, "c:send") || strings.EqualFold(line, "c:s") {
+		if strings.EqualFold(line, command.SHORT_SEND) || strings.EqualFold(line, command.LONG_SEND) {
+			break
+		}
+
+		if strings.EqualFold(line, command.SHORT_HELP) || strings.EqualFold(line, command.LONG_HELP) {
+			help.ShowCommands()
+			sb.WriteString(command.LONG_HELP)
 			break
 		}
 

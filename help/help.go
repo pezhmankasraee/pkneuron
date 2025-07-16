@@ -4,6 +4,17 @@ import (
 	"os"
 )
 
+var commandHelp string = `
+Commands / Special Markers:
+    All commands start with 'cc::'.
+    For example: >>c:s
+
+    cc::e, >>cc::exit               exits the application (it can be done with Ctrl-c, too)
+    cc::h, >>cc::help               shows commands in the request prompt
+    cc::s, cc::send               sends your request to AI model
+
+`
+
 func ShowHelp(isHelp bool) {
 	if isHelp {
 		generalHelp()
@@ -19,16 +30,14 @@ Usage: pkneuron [OPTIONS]
 
 Options:
     -h, --help          Show this help message
-
-Commands / Special Markers:
-    All commands start and end with 'c:'.
-    For example: c:s
-
-    c:e, c:exit               exit the application (it can be done with Ctrl-c, too)
-    c:s, c:send               sends your request to AI model
-
-For more information, visit: https://github.com/pezhmankasraee/pkneuron
 `
 
-	println(helpMenu)
+	visit := "For more information, visit: https://github.com/pezhmankasraee/pkneuron"
+
+	println(helpMenu + commandHelp + visit)
+}
+
+func ShowCommands() {
+
+	println(commandHelp)
 }
