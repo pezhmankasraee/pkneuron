@@ -15,7 +15,7 @@ func Read() string {
 
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("\033[33;1mNOTE: \033[0m")
-	fmt.Println("\033[33;1m-  use " + command.SHORT_SEND + " / " + command.LONG_SEND + " at the end of the request\033[0m")
+	fmt.Println("\033[33;1m-  use " + command.SHORT_SEND + " / " + command.LONG_SEND + " to send the prompt at the end of the request\033[0m")
 	fmt.Println("\033[33;1m-  use " + command.SHORT_HELP + " / " + command.LONG_HELP + " to see list of commmands\033[0m")
 	fmt.Println("\033[33mPKNeuron> \033[0m")
 

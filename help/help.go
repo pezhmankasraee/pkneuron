@@ -9,8 +9,8 @@ Commands / Special Markers:
     All commands start with 'cc::'.
     For example: >>c:s
 
-    cc::e, >>cc::exit               exits the application (it can be done with Ctrl-c, too)
-    cc::h, >>cc::help               shows commands in the request prompt
+    cc::e, cc::exit               exits the application (it can be done with Ctrl-c, too)
+    cc::h, cc::help               shows commands in the request prompt
     cc::s, cc::send               sends your request to AI model
 
 `
