@@ -102,4 +102,4 @@ PKNeuron is distributed under the [BSD 3-Clause License](LICENSE). See the  file
 PKNeuron is developed and maintained by **Pezhman Kasraee**.
 
 *   **Email**: github@pezhmankasraee.com
-*   **GitHub**: [Pezhman Kasraee](https://github.com/PezhmanKasraee) (Adjust this link to your actual GitHub profile)
+*   **GitHub**: [Pezhman Kasraee](https://github.com/PezhmanKasraee)
