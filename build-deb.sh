@@ -2,8 +2,8 @@
 set -e
 
 # ---- config ----
-APP_NAME="pkneuron"              # change to your Go binary name
-VERSION="0.0.3"               # set your app version
+APP_NAME="pkneuron"
+VERSION="1.0.0"                  # set your app version
 MAINTAINER="Pezhman Kasraee <github@pezhmankasraee.com>"
 DESCRIPTION="PKNeuron - An interactive LLM assistant for Linux terminal"
 
