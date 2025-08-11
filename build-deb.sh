@@ -3,7 +3,7 @@ set -e
 
 # ---- config ----
 APP_NAME="pkneuron"
-VERSION="1.0.0"                  # set your app version
+VERSION="1.2.0"                  # set your app version
 MAINTAINER="Pezhman Kasraee <github@pezhmankasraee.com>"
 DESCRIPTION="PKNeuron - An interactive LLM assistant for Linux terminal"
 
