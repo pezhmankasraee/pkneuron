@@ -49,29 +49,31 @@ func Init() {
 
 			clean := CleanResponse(result)
 
-			regexpResponse := createRegExp(prompt.ResponseStartSha512, prompt.ResponseEndSha512)
-			response := ExtractPKNeuronTag(clean, regexpResponse)
-			fmt.Println("\033[36mResponse> \033[0m")
-			fmt.Println(response)
+			// regexpResponse := createRegExp(prompt.ResponseStartSha512, prompt.ResponseEndSha512)
+			// response := ExtractPKNeuronTag(clean, regexpResponse)
+			// fmt.Println("\033[36mResponse> \033[0m")
+			// fmt.Println(response)
 
-			regexpRephrased := createRegExp(prompt.RephrasedStartSha512, prompt.RephrasedEndSha512)
-			rephrased := ExtractPKNeuronTag(clean, regexpRephrased)
-			fmt.Println("\033[36mRephrase> \033[0m")
-			fmt.Println(rephrased)
+			// regexpRephrased := createRegExp(prompt.RephrasedStartSha512, prompt.RephrasedEndSha512)
+			// rephrased := ExtractPKNeuronTag(clean, regexpRephrased)
+			// fmt.Println("\033[36mRephrase> \033[0m")
+			// fmt.Println(rephrased)
 
-			regexpKeywords := createRegExp(prompt.KeywordsStartSha512, prompt.KeywordsEndSha512)
-			keywords := ExtractPKNeuronTag(clean, regexpKeywords)
-			fmt.Println("\033[36mKeywords> \033[0m")
-			fmt.Println(keywords)
+			// regexpKeywords := createRegExp(prompt.KeywordsStartSha512, prompt.KeywordsEndSha512)
+			// keywords := ExtractPKNeuronTag(clean, regexpKeywords)
+			// fmt.Println("\033[36mKeywords> \033[0m")
+			// fmt.Println(keywords)
 
-			regexpSummary := createRegExp(prompt.SummaryStartSha512, prompt.SummaryEndSha512)
-			summary := ExtractPKNeuronTag(clean, regexpSummary)
-			fmt.Println("\033[36mSummary> \033[0m")
-			fmt.Println(summary)
+			// regexpSummary := createRegExp(prompt.SummaryStartSha512, prompt.SummaryEndSha512)
+			// summary := ExtractPKNeuronTag(clean, regexpSummary)
+			// fmt.Println("\033[36mSummary> \033[0m")
+			// fmt.Println(summary)
 
-			numberOfTokens := wordCount(clean)
-			fmt.Println("\033[36mNumber of tokens> \033[0m")
-			fmt.Println(numberOfTokens)
+			// numberOfTokens := wordCount(clean)
+			// fmt.Println("\033[36mNumber of tokens> \033[0m")
+			// fmt.Println(numberOfTokens)
+
+			fmt.Print(clean)
 		}
 	}
 }
