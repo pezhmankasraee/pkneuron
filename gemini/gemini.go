@@ -7,6 +7,7 @@ import (
 
 	"github.com/pezhmankasraee/pklog/v2"
 	"github.com/pezhmankasraee/pkneuron/command"
+	"github.com/pezhmankasraee/pkneuron/command/utility/color"
 	"github.com/pezhmankasraee/pkneuron/errormessage"
 	"github.com/pezhmankasraee/pkneuron/prompt"
 	"github.com/pezhmankasraee/pkneuron/reader"
@@ -50,30 +51,33 @@ func Init() {
 
 			clean := CleanResponse(result)
 
-			fmt.Print(clean)
+			fmt.Print("\033[31m" + clean + color.GRAY)
 
+			fmt.Println()
 			fmt.Println("----------------------")
 
 			response := schema.Convert(clean)
 
 			fmt.Println("")
-			fmt.Println("\033[96m" + "Q U E S T I O N" + "\033[0m")
+			fmt.Println(color.BLUE + "Q U E S T I O N" + color.GRAY)
 			fmt.Println(response.Request)
 
-			fmt.Println("\033[96m" + "I N T R O D U C T I O N" + "\033[0m")
+			fmt.Println(color.BLUE + "I N T R O D U C T I O N" + color.GRAY)
 			fmt.Println(response.Introduction)
 
-			fmt.Println("\033[96m" + "D E S C R I P T I O N" + "\033[0m")
+			fmt.Println(color.BLUE + "D E S C R I P T I O N" + color.GRAY)
 			fmt.Println(response.Description)
 
-			fmt.Println("\033[96m" + "S U M M A R Y" + "\033[0m")
+			fmt.Println(color.BLUE + "S U M M A R Y" + color.GRAY)
 			fmt.Println(response.Summary)
 
-			fmt.Println("\033[96m]" + "K E Y W O R D S" + "\033[0m]")
+			fmt.Println(color.BLUE + "K E Y W O R D S" + color.GRAY)
 			for i := 0; i < len(response.Keywords); i++ {
 				fmt.Print(response.Keywords[i])
 				fmt.Print(", ")
 			}
+
+			fmt.Println()
 		}
 	}
 }
