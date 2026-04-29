@@ -52,16 +52,28 @@ func Init() {
 
 			fmt.Print(clean)
 
-			fmt.Print("----------------------")
+			fmt.Println("----------------------")
 
-			r := schema.Convert(clean)
-			//fmt.Print(clean)
-			fmt.Print(r.Introduction)
+			response := schema.Convert(clean)
 
-			fmt.Print(r.Description)
+			fmt.Println("")
+			fmt.Println("\033[96m" + "Q U E S T I O N" + "\033[0m")
+			fmt.Println(response.Request)
 
-			fmt.Print(r.Summary)
+			fmt.Println("\033[96m" + "I N T R O D U C T I O N" + "\033[0m")
+			fmt.Println(response.Introduction)
 
+			fmt.Println("\033[96m" + "D E S C R I P T I O N" + "\033[0m")
+			fmt.Println(response.Description)
+
+			fmt.Println("\033[96m" + "S U M M A R Y" + "\033[0m")
+			fmt.Println(response.Summary)
+
+			fmt.Println("\033[96m]" + "K E Y W O R D S" + "\033[0m]")
+			for i := 0; i < len(response.Keywords); i++ {
+				fmt.Print(response.Keywords[i])
+				fmt.Print(", ")
+			}
 		}
 	}
 }
