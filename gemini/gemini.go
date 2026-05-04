@@ -59,22 +59,23 @@ func Init() {
 			response := schema.Convert(clean)
 
 			fmt.Println("")
-			fmt.Println(color.BLUE + "Q U E S T I O N" + color.GRAY)
-			fmt.Println(response.Request)
-
 			fmt.Println(color.BLUE + "I N T R O D U C T I O N" + color.GRAY)
-			fmt.Println(response.Introduction)
+			fmt.Println(response.Content.Introduction)
 
-			fmt.Println(color.BLUE + "D E S C R I P T I O N" + color.GRAY)
-			fmt.Println(response.Description)
+			fmt.Println(color.BLUE + "E L A B O R A R T I O N" + color.GRAY)
+			fmt.Println(response.Content.Elaboration)
 
 			fmt.Println(color.BLUE + "S U M M A R Y" + color.GRAY)
-			fmt.Println(response.Summary)
+			fmt.Println(response.Content.Summary)
 
 			fmt.Println(color.BLUE + "K E Y W O R D S" + color.GRAY)
-			for i := 0; i < len(response.Keywords); i++ {
-				fmt.Print(response.Keywords[i])
-				fmt.Print(", ")
+			for i := 0; i < len(response.Content.Keywords); i++ {
+				fmt.Print(response.Content.Keywords[i])
+				if i == len(response.Content.Keywords)-1 {
+					fmt.Print(".")
+				} else {
+					fmt.Print(", ")
+				}
 			}
 
 			fmt.Println()

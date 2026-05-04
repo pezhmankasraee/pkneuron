@@ -5,15 +5,24 @@ import (
 	"time"
 )
 
+
+// M2MResponse matches your strict JSON schema
 type ResponseV1 struct {
-	SchemaVersion string    `json:"schema_version"`
-	RequestId     string    `json:"request_id"`
-	Timestamp     time.Time `json:"timestamp"`
-	Request       string    `json:"request"`
-	Introduction  string    `json:"introduction"`
-	Description   string    `json:"description"`
-	Summary       string    `json:"summary"`
-	Keywords      []string  `json:"keywords"`
+	Metadata Metadata `json:"metadata"`
+	Content  Content  `json:"content"`
+}
+
+type Metadata struct {
+	Version   string    `json:"version"`
+	RequestID string    `json:"request_id"`
+	Timestamp time.Time `json:"timestamp"` // Serializes to RFC3339 (ISO 8601)
+}
+
+type Content struct {
+	Introduction string   `json:"introduction"`
+	Elaboration  string   `json:"elaboration"`
+	Summary      string   `json:"summary"`
+	Keywords     []string `json:"keywords"`
 }
 
 func Convert(responseV1Json string) ResponseV1 {
