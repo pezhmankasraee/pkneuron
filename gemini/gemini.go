@@ -7,9 +7,11 @@ import (
 
 	"github.com/pezhmankasraee/pklog/v2"
 	"github.com/pezhmankasraee/pkneuron/command"
+	"github.com/pezhmankasraee/pkneuron/command/utility/color"
 	"github.com/pezhmankasraee/pkneuron/errormessage"
 	"github.com/pezhmankasraee/pkneuron/prompt"
 	"github.com/pezhmankasraee/pkneuron/reader"
+	"github.com/pezhmankasraee/pkneuron/schema"
 	"google.golang.org/genai"
 )
 
@@ -49,29 +51,34 @@ func Init() {
 
 			clean := CleanResponse(result)
 
-			regexpResponse := createRegExp(prompt.ResponseStartSha512, prompt.ResponseEndSha512)
-			response := ExtractPKNeuronTag(clean, regexpResponse)
-			fmt.Println("\033[36mResponse> \033[0m")
-			fmt.Println(response)
+			fmt.Print("\033[31m" + clean + color.GRAY)
 
-			regexpRephrased := createRegExp(prompt.RephrasedStartSha512, prompt.RephrasedEndSha512)
-			rephrased := ExtractPKNeuronTag(clean, regexpRephrased)
-			fmt.Println("\033[36mRephrase> \033[0m")
-			fmt.Println(rephrased)
+			fmt.Println()
+			fmt.Println("----------------------")
 
-			regexpKeywords := createRegExp(prompt.KeywordsStartSha512, prompt.KeywordsEndSha512)
-			keywords := ExtractPKNeuronTag(clean, regexpKeywords)
-			fmt.Println("\033[36mKeywords> \033[0m")
-			fmt.Println(keywords)
+			response := schema.Convert(clean)
 
-			regexpSummary := createRegExp(prompt.SummaryStartSha512, prompt.SummaryEndSha512)
-			summary := ExtractPKNeuronTag(clean, regexpSummary)
-			fmt.Println("\033[36mSummary> \033[0m")
-			fmt.Println(summary)
+			fmt.Println("")
+			fmt.Println(color.BLUE + "I N T R O D U C T I O N" + color.GRAY)
+			fmt.Println(response.Content.Introduction)
 
-			numberOfTokens := wordCount(clean)
-			fmt.Println("\033[36mNumber of tokens> \033[0m")
-			fmt.Println(numberOfTokens)
+			fmt.Println(color.BLUE + "E L A B O R A R T I O N" + color.GRAY)
+			fmt.Println(response.Content.Elaboration)
+
+			fmt.Println(color.BLUE + "S U M M A R Y" + color.GRAY)
+			fmt.Println(response.Content.Summary)
+
+			fmt.Println(color.BLUE + "K E Y W O R D S" + color.GRAY)
+			for i := 0; i < len(response.Content.Keywords); i++ {
+				fmt.Print(response.Content.Keywords[i])
+				if i == len(response.Content.Keywords)-1 {
+					fmt.Print(".")
+				} else {
+					fmt.Print(", ")
+				}
+			}
+
+			fmt.Println()
 		}
 	}
 }
